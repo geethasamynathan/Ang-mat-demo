@@ -1,0 +1,42 @@
+<form [formGroup]="registrationForm" noValidate>
+<!-- (ngSubmit)="onSubmit()"  -->
+    <input formControlName="firstName" placeholder="Your name">
+    <input formControlName="email" placeholder="Your email">
+    <input formControlName="phoneNumber" placeholder="Your message">
+    <button type="submit">Register</button>
+    <!-- Upload image -->
+<div class="avatar-upload">
+    <div class="avatar-edit">
+       <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput (change)="uploadFile($event)" />
+       <label for="imageUpload" *ngIf="editFile" [ngClass]="['custom-label', 'upload-image']"></label>
+       <label *ngIf="removeUpload" [ngClass]="['custom-label', 'remove-image']" (click)="removeUploadedFile()"></label>
+    </div>
+    <div class="avatar-preview">
+       <div id="imagePreview" [style.backgroundImage]="'url('+ imageUrl +')'">
+       </div>
+    </div>
+ </div>
+ <div class="mb-3">
+    <label>State</label>
+    <select class="custom-select d-block w-100" (change)="changeCity($event)" formControlName="cityName">
+       <option value="">Choose...</option>
+       <option *ngFor="let city of City" [ngValue]="city">{{city}}</option>
+    </select>
+ </div>
+ <!-- Radio Buttons -->
+<div class="group-gap">
+    <h5 class="mb-3">Gender</h5>
+    <div class="d-block my-3">
+       
+       <div class="custom-control custom-radio">
+          <input id="male" type="radio" class="custom-control-input" name="gender" formControlName="gender" value="male"
+             checked>
+          <label class="custom-control-label" for="male">Male</label>
+       </div>
+       <div class="custom-control custom-radio">
+          <input id="female" type="radio" class="custom-control-input" name="gender" formControlName="gender" value="female">
+          <label class="custom-control-label" for="female">Female</label>
+       </div>
+    </div>
+ </div>
+  </form>

@@ -1,0 +1,47 @@
+<div class="container-fluid">
+    <form [formGroup]="registrationForm">
+        <div class="col-md-3" class="form-group">
+            <label>Username</label>
+            <input type="text" class="form-control" formControlName="username">
+        </div>
+        <div class="col-md-3" class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" formControlName="password">
+        </div>
+        <div class="col-md-3" class="form-group">
+            <label>ConfirmPassword</label>
+            <input type="text" class="form-control" formControlName="confirmpassword">
+        </div>
+        <!--Nested Form Group-->
+        <div formGroupName="address">
+            <div class="col-md-3" class="form-group">
+                <label>City</label>
+                <input type="text" class="form-control" formControlName="city">
+            </div>
+            <div class="col-md-3" class="form-group">
+                <label>State</label>
+                <input type="text" class="form-control" formControlName="state">
+            </div>
+            <br>
+            <!--   <div *ngFor="let brand of getmostpreferredbrandFormControls();let i =index">
+             <label>BrandName</label>
+              <input type="text" [formControl]="brand">
+              <button  class="btn btn-primary"(click)="removeBrand(i)" >Remove</button>
+             </div>
+             <button  class="btn btn-primary"(click)="addBrand()" >Add New Brand</button>-->
+        </div>
+        <div formArrayName="mostpreferredbrand">
+            <div class="form-inline">
+                <!-- <ng-container *ngFor="let brand of registrationForm.get('mostpreferredbrand')['controls'];index as i">
+                    <input type="text" placeholder="Add Brand.." formControlName={{i}}> &nbsp;&nbsp;
+                    <button class="btn btn-danger" (click)="removeBrand(i)">Remove</button>
+                    <br>
+                </ng-container> -->
+                <hr>
+                <button class="btn btn-success" (click)="addBrand()">Add Brand</button>
+            </div>
+        </div>
+        <br>
+        <button class="btn btn-success">Register</button>
+    </form>
+</div>
